@@ -20,6 +20,12 @@ a{
 .hide{
     display: none !important;
 }
+.overflow_x_hide{
+    overflow-x: hidden;
+}
+.overflow_y_hide{
+    overflow-y: hidden;
+}
 
 /* flex */
 .flex-center{
@@ -80,6 +86,9 @@ a{
 }
 
 /* 空行 */
+.spaceH0_5{
+    height: 0.5rem;
+}
 .spaceH0_75{
     height: 0.75rem;
 }
