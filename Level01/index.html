@@ -42,7 +42,21 @@
                     <p @click="ChangePage('home', 'donate')">小額捐款</p>
                     <p @click="ChangePage('home', 'feedback')">民眾服務</p>
                 </nav>
+                <img class="menu_open_btn" @click="OpenMenu()" src="./Content/Image/menu.svg">
             </header>
+
+            <div class="menu" :class="{'open': isMenuOpen}">
+                <header>
+                    <img @click="ChangePage('home', 'banner');CloseMenu()" src="./Content/Image/logo.svg">
+                    <img class="cancel" @click="CloseMenu()" src="./Content/Image/cancel.svg">
+                </header>
+
+                <p @click="ChangePage('home', 'advocate');CloseMenu()">喵主張</p>
+                <p @click="ChangePage('home', 'events');CloseMenu()">最新活動</p>
+                <p @click="ChangePage('home', 'policys');CloseMenu()">政策議題</p>
+                <p @click="ChangePage('home', 'donate');CloseMenu()">小額捐款</p>
+                <p @click="ChangePage('home', 'feedback');CloseMenu()">民眾服務</p>
+            </div>
 
             <section class="home_page home_page--js" :class="{'hide': page != 'home'}">
                 <sectione class="banner banner--js">
@@ -50,6 +64,8 @@
                         <img src="./Content/Image/banner/banner_title01.svg">
                         <img src="./Content/Image/banner/banner_title02.svg">
                     </div>
+                    <img class="subtitle" data-aos="fade-left" src="./Content/Image/banner/banner_subtitle.svg">
+
                     <img class="man" data-aos="zoom-in" src="./Content/Image/man.svg">
                     <div class="policy_box" :class="{'active': currentBannerPolicy == '1'}">
                         <p class="policy active">打造休閒天堂！</br>推廣寵物休閒與娛樂場所</p>
@@ -69,15 +85,12 @@
                             <img src="./Content/Image/arrow.svg">
                         </button>
                     </div>
-                    <img class="subtitle" data-aos="fade-left" src="./Content/Image/banner/banner_subtitle.svg">
                 </sectione>
-                <div class="spaceH2"></div>
-                <div class="spaceH2"></div>
 
                 <sectione class="advocate">
-                    <div class="wave above_wave advocate--js">
-                        <img src="./Content/Image/wave/home/above_wave.svg">
-                    </div>
+                    <div class="wave above_wave_shadow"></div>
+                    <div class="wave above_wave advocate--js"></div>
+
                     <div class="box">
                         <img src="./Content/Image/advocate.svg">
                         <div class="content">
@@ -86,7 +99,8 @@
                             <p>因此，我期望能在立法院內推進這些政策，確保每一隻貓咪都能得到他們應有的照顧，同時也為台灣的經濟發展助一臂之力。讓我們一同護航台灣的幸福經濟，從照顧每一隻貓咪開始。</p>
                         </div>
                     </div>
-                    <img class="wave under_wave" src="./Content/Image/wave/home/under_wave.svg">
+
+                    <div class="wave under_wave"></div>
                 </sectione>
                 <div class="spaceH2"></div>
                 <div class="spaceH1"></div>
@@ -135,8 +149,6 @@
                     </div>
 
                 </sectione>
-                <div class="spaceH2"></div>
-                <div class="spaceH2"></div>
 
                 <sectione class="policys policys--js">
                     <p>政策議題</p>
@@ -148,8 +160,6 @@
                                 <p>為毛孩子謀福利！</p>
                                 <p>推動寵物醫療保障方案</p>
                             </div>
-                            <div class="spaceH2"></div>
-                            <div class="spaceH1"></div>
 
                             <div class="item">
                                 <div class="title">
@@ -181,8 +191,6 @@
                                 <p>打造休閒天堂！</p>
                                 <p>推廣寵物休閒與娛樂場所</p>
                             </div>
-                            <div class="spaceH2"></div>
-                            <div class="spaceH1"></div>
 
                             <div class="item">
                                 <div class="title">
@@ -214,8 +222,6 @@
                                 <p>讓愛更加專業！</p>
                                 <p>推廣寵物飼養教育</p>
                             </div>
-                            <div class="spaceH2"></div>
-                            <div class="spaceH1"></div>
 
                             <div class="item">
                                 <div class="title">
@@ -248,12 +254,9 @@
 
                 <sectione class="donate">
                     <p>您的小筆捐款，是每隻毛孩未來的大大動力！</p>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
 
                     <img class="feed" src="./Content/Image/feed.svg">
-                    <div class="box">
+                    <div class="box" data-aos="zoom-in">
                         <p>目前小額捐款贊助總金額</p>
                         <p>{{ NumberFormat(totalDonateMoney) }}</p>
                         <div @click="ChangePage('donate', 'section02')">
@@ -264,17 +267,12 @@
                 </sectione>
 
                 <sectione class="feedback">
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-
-                    <div class="title feedback--js">您的聲音，我們的行動！</div>
+                    <div class="title feedback--js" data-aos="fade-down">您的聲音，我們的行動！</div>
                     <div class="spaceH0_75"></div>
 
-                    <div class="content">親愛的鄉親，每一位市民的意見都是我們社區前進的原動力。無論大小事，我都誠摯希望聽到您的建議。分享您的想法，一同為我們的未來打造更美好！</div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
+                    <div class="content" data-aos="fade-down">親愛的鄉親，每一位市民的意見都是我們社區前進的原動力。無論大小事，我都誠摯希望聽到您的建議。分享您的想法，一同為我們的未來打造更美好！</div>
 
-                    <div class="form">
+                    <div class="form" data-aos="fade-down">
                         <label class="form_input">
                             <span>您的姓名</span>
                             <input type="text" v-model="feedBackForm.name" />
@@ -305,21 +303,11 @@
 
                         <button class="btn" @click="SendFeedBack()">送出意見</button>
                     </div>
-
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
                 </sectione>
             </section>
 
             <section class="donate_page donate_page--js" :class="{'hide': page != 'donate'}">
-                <div class="spaceH2"></div>
-                <div class="spaceH2"></div>
-                <div class="spaceH2 section01--js"></div>
-
-                <section class="section01">
+                <section class="section01 section01--js">
                     <p>您的小筆捐款，是每隻毛孩未來的大大動力！</p>
                     <img src="./Content/Image/feed.svg">
                     <div class="box">
@@ -329,9 +317,7 @@
                 </section>
 
                 <section class="section02">
-                    <div class="wave above_wave section02--js">
-                        <img src="./Content/Image/wave/home/above_wave.svg">
-                    </div>
+                    <div class="wave above_wave section02--js"></div>
 
                     <div class="box">
                         <div class="spaceH2"></div>
@@ -369,9 +355,7 @@
 
                                 <p class="item_sponsor">已有 <span>{{ donatePeopleNum["60000"] }}</span> 人贊助</p>
                             </div>
-                        </div>t
-                        <div class="spaceH2"></div>
-                        <div class="spaceH2"></div>
+                        </div>
 
                         <div class="form">
                             <label class="form_input" :class="{'active': isCustomizeDonateMoney}">
@@ -380,7 +364,6 @@
                             
                                 <p class="error" :class="{'active': donateMoneyError}">請輸入捐贈金額</p>
                             </label>
-                            <div class="spaceH2"></div>
 
                             <button class="btn" @click="OpenPopup('paymentMethod');">
                                 <img src="./Content/Image/money.svg">
@@ -388,13 +371,8 @@
                             </button>
                         </div>
 
-                        <div class="spaceH2"></div>
-                        <div class="spaceH2"></div>
-                        <div class="spaceH2"></div>
-
                         <div class="precautions">
                             <p>捐贈者應注意事項</p>
-                            <div class="spaceH2"></div>
 
                             <ul>
                                 <li>捐款人必須為本國國民且具有選舉權。</li>
@@ -418,7 +396,6 @@
                 <div class="popup-body">
                     <p class="title">提交成功！</p>
                     <p class="content">感謝您分享建言</br>喵團隊將不負所托，全力以赴！</p>
-                    <div class="spaceH2"></div>
 
                     <button @click="ClosePopup('feedback')">關閉</button>
                 </div>
@@ -438,19 +415,12 @@
                     <div class="spaceH0_5"></div>
 
                     <hr>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH1"></div>
-
+ 
                     <div class="payway_items">
                         <div class="item" @click="payway = 'card'" :class="{'active': payway == 'card'}">信用卡支付</div>
                         <div class="item" @click="payway = 'supermarket'" :class="{'active': payway == 'supermarket'}">超商代碼</div>
                         <div class="item" @click="payway = 'atm'" :class="{'active': payway == 'atm'}">ATM虛擬轉帳</div>
                     </div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
 
                     <button @click="ClosePopup('paymentMethod');OpenPopup('sponsorSuccess')">下一步</button>
                 </div>
@@ -462,8 +432,6 @@
                 <div class="popup-body">
                     <p class="title">贊助完成！</p>
                     <p class="content">感謝您為喵星人的進步盡一份支持</br>喵團隊將不負所托，全力以赴！</p>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH1"></div>
                     
                     <div class="donate_money">
                         <p>贊助金額</p>
@@ -472,9 +440,6 @@
                     <div class="spaceH0_5"></div>
 
                     <hr>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH2"></div>
-                    <div class="spaceH1"></div>
 
                     <button @click="ClosePopup('sponsorSuccess')">關閉</button>
                 </div>
@@ -498,8 +463,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="spaceH2"></div>
-                <div class="spaceH2"></div>
 
                 <div class="copyright">© 2023 喵立翰 版權所有</div>
             </footer>
@@ -512,6 +475,7 @@
                     return{
                         page: "home",
                         currentBannerPolicy: '',
+                        isMenuOpen: false,
                         //
                         donateMoneyError: false,
                         isCustomizeDonateMoney: false,
@@ -547,7 +511,6 @@
                 },
                 mounted() {
                     AOS.init({
-                        once: true,
                         mirror: true,
                     });
 
@@ -627,6 +590,14 @@
                                 }
                                 break;
                         }
+                    },
+                    OpenMenu: function() {
+                        this.isMenuOpen = true;
+                        document.body.classList.add('overflow_y_hide');
+                    },
+                    CloseMenu: function() {
+                        this.isMenuOpen = false;
+                        document.body.classList.remove('overflow_y_hide');
                     },
                     //
                     BannerPolicySwiper: function() {
