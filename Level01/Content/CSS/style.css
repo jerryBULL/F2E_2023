@@ -74,7 +74,7 @@ html {
   border-style: solid;
   border-width: 0 15px 20px 15px;
   border-color: transparent transparent #fff transparent;
-  top: -30%;
+  top: -45%;
 }
 .form .form_input .error::after {
   position: absolute;
