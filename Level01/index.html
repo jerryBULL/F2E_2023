@@ -266,8 +266,8 @@
                     </div>
                 </sectione>
 
-                <sectione class="feedback">
-                    <div class="title feedback--js" data-aos="fade-down">您的聲音，我們的行動！</div>
+                <sectione class="feedback feedback--js">
+                    <div class="title" data-aos="fade-down">您的聲音，我們的行動！</div>
                     <div class="spaceH0_75"></div>
 
                     <div class="content" data-aos="fade-down">親愛的鄉親，每一位市民的意見都是我們社區前進的原動力。無論大小事，我都誠摯希望聽到您的建議。分享您的想法，一同為我們的未來打造更美好！</div>
@@ -317,6 +317,7 @@
                 </section>
 
                 <section class="section02">
+                    <div class="wave above_wave_shadow section02--js"></div>
                     <div class="wave above_wave section02--js"></div>
 
                     <div class="box">
@@ -417,9 +418,18 @@
                     <hr>
  
                     <div class="payway_items">
-                        <div class="item" @click="payway = 'card'" :class="{'active': payway == 'card'}">信用卡支付</div>
-                        <div class="item" @click="payway = 'supermarket'" :class="{'active': payway == 'supermarket'}">超商代碼</div>
-                        <div class="item" @click="payway = 'atm'" :class="{'active': payway == 'atm'}">ATM虛擬轉帳</div>
+                        <div class="item" @click="payway = 'card'" :class="{'active': payway == 'card'}">
+                            <p>信用卡支付</p>
+                            <img src="./Content/Image/tick.svg">
+                        </div>
+                        <div class="item" @click="payway = 'supermarket'" :class="{'active': payway == 'supermarket'}">
+                            <p>超商代碼</p>
+                            <img src="./Content/Image/tick.svg">
+                        </div>
+                        <div class="item" @click="payway = 'atm'" :class="{'active': payway == 'atm'}">
+                            <p>ATM虛擬轉帳</p>
+                            <img src="./Content/Image/tick.svg">
+                        </div>
                     </div>
 
                     <button @click="ClosePopup('paymentMethod');OpenPopup('sponsorSuccess')">下一步</button>
@@ -661,7 +671,7 @@
                                     isVerify = inputValue != "" && inputValue.match(namePattern);
 
                                     if(!isVerify){
-                                        this.feedBackFormErrorMsg["name"] = "姓名格式錯誤";
+                                        this.feedBackFormErrorMsg["name"] = "無效姓名";
                                     }
                                     break;
                                 case "email":
@@ -670,7 +680,7 @@
                                     isVerify = this.feedBackForm["phone"] != '' || inputValue.match(emailPattern);
 
                                     if(!isVerify){
-                                        this.feedBackFormErrorMsg["email"] = "信箱格式錯誤";
+                                        this.feedBackFormErrorMsg["email"] = "無效信箱";
                                     }
                                     break;
                                 case "phone":
@@ -679,7 +689,7 @@
                                     isVerify = this.feedBackForm["email"] != '' || inputValue.match(phonePattern);
 
                                     if(!isVerify){
-                                        this.feedBackFormErrorMsg["phone"] = "手機格式錯誤";
+                                        this.feedBackFormErrorMsg["phone"] = "無效手機";
                                     }
                                     break;
                                 case "content":
