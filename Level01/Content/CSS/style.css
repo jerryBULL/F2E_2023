@@ -20,8 +20,8 @@
 body,
 html {
   width: 100%;
+  -moz-user-select: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
           user-select: none;
   overflow-x: hidden;
 }
@@ -37,20 +37,22 @@ html {
   width: 100%;
   border-radius: 6px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .form .form_input span {
-  margin-right: 10px;
+  margin-right: 13px;
   font-size: 18px;
   font-weight: 700;
 }
-.form .form_input input {
+.form .form_input div {
+  flex: 1;
+}
+.form .form_input div input {
   text-align: right;
   border: none;
   background: rgba(255, 255, 255, 0);
-  flex: 1;
   font-size: 16px;
+  width: 100%;
 }
 .form .form_input .error {
   position: absolute;
@@ -2070,14 +2072,14 @@ footer .copyright {
 }
 @media (max-width: 500px) {
   .home_page .advocate .box .content p {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 16px;
   }
   .home_page .advocate .box .content p:first-child {
     font-size: 20px;
   }
   .home_page .events .more_event {
-    top: -6.5%;
+    top: -6.7%;
   }
   .donate_page .section02 {
     padding-bottom: 420%;
@@ -2087,18 +2089,6 @@ footer .copyright {
   }
 }
 @media (max-width: 375px) {
-  .form {
-    width: 100%;
-  }
-  .form .form_input span {
-    font-size: 13px;
-  }
-  .form .form_input input {
-    font-size: 13px;
-  }
-  .form .form_input.textarea span {
-    margin-bottom: 10px;
-  }
   .popup .popup-body {
     padding: 20px 10px;
   }

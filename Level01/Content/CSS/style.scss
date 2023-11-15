@@ -30,6 +30,8 @@ $color-gradient04: linear-gradient(180deg, #DAB071 0%, rgba(202, 178, 49, 0) 100
 body,
 html{
     width: 100%;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     overflow-x: hidden;
 }
@@ -45,20 +47,23 @@ html{
         width: 100%;
         border-radius: 6px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
 
         span{
-            margin-right: 10px;
+            margin-right: 13px;
             font-size: 18px;
             font-weight: 700;
         }
-        input{
-            text-align: right;
-            border: none;
-            background: #ffffff00;
+        div{
             flex: 1;
-            font-size: 16px;
+
+            input{
+                text-align: right;
+                border: none;
+                background: #ffffff00;
+                font-size: 16px;
+                width: 100%;
+            }
         }
         .error{
             position: absolute;
@@ -2538,7 +2543,7 @@ footer{
             .box{
                 .content{
                     p{
-                        margin-bottom: 20px;
+                        margin-bottom: 10px;
                         font-size: 16px;
     
                         &:first-child{
@@ -2551,7 +2556,7 @@ footer{
 
         .events{
             .more_event{
-                top: -6.5%;
+                top: -6.7%;
             }
         }
     }
@@ -2568,25 +2573,6 @@ footer{
 }
 
 @media (max-width: 375px) {
-    .form{
-        width: 100%;
-
-        .form_input{
-            span{
-                font-size: 13px;
-            }
-            input{
-                font-size: 13px;
-            }
-
-            &.textarea{
-                span{
-                    margin-bottom: 10px;
-                }
-            }
-        }
-    }
-
     .popup{
         .popup-body{
             padding: 20px 10px;

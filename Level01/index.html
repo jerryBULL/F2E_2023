@@ -275,21 +275,27 @@
                     <div class="form" data-aos="fade-down">
                         <label class="form_input">
                             <span>您的姓名</span>
-                            <input type="text" v-model="feedBackForm.name" />
+                            <div>
+                                <input type="text" v-model="feedBackForm.name" />
+                            </div>
                             <p class="error" :class="{'active': feedBackFormErrorMsg.name}">{{ feedBackFormErrorMsg.name }}</p>
                         </label>
                         <div class="spaceH1"></div>
 
                         <label class="form_input">
                             <span>您的Email</span>
-                            <input placeholder="Email及手機可擇一填寫" type="text" v-model="feedBackForm.email" />
+                            <div>
+                                <input placeholder="Email及手機可擇一填寫" type="text" v-model="feedBackForm.email" />
+                            </div>
                             <p class="error" :class="{'active': feedBackFormErrorMsg.email}">{{ feedBackFormErrorMsg.email }}</p>
                         </label>
                         <div class="spaceH1"></div>
 
                         <label class="form_input">
                             <span>您的手機</span>
-                            <input placeholder="Email及手機可擇一填寫" type="text" v-model="feedBackForm.phone" />
+                            <div>
+                                <input placeholder="Email及手機可擇一填寫" type="text" v-model="feedBackForm.phone" />
+                            </div>
                             <p class="error" :class="{'active': feedBackFormErrorMsg.phone}">{{ feedBackFormErrorMsg.phone }}</p>
                         </label>
                         <div class="spaceH1"></div>
@@ -580,23 +586,27 @@
                                 break;
                         }
 
-                        document.body.classList.add('overflow_y_hide');
+                        document.documentElement.classList.add('overflow_y_hide');
 
                         this.popup[popup_name].isOpen = true;
                     },
                     ClosePopup: function(popup_name) {
-                        document.body.classList.remove('overflow_y_hide');
+                        let v_this = this;
 
-                        this.popup[popup_name].isOpen = false;
+                        document.documentElement.classList.remove('overflow_y_hide');
+
+                        v_this.popup[popup_name].isOpen = false;
 
                         switch(popup_name){
                             case "sponsorSuccess":
-                                this.ChangePage("donate", "section01");
+                                v_this.ChangePage("donate", "section01");
 
-                                this.AddDonateMoney(this.donateMoney);
+                                setTimeout(() => {
+                                    v_this.AddDonateMoney(v_this.donateMoney);
+                                }, 500);
 
-                                if(this.donateMoney in this.donatePeopleNum){
-                                    this.donatePeopleNum[this.donateMoney]++
+                                if(v_this.donateMoney in v_this.donatePeopleNum){
+                                    v_this.donatePeopleNum[v_this.donateMoney]++;
                                 }
                                 break;
                         }
@@ -630,7 +640,7 @@
                         let maxMoney = 0;
 
                         if(isInit){
-                            maxMoney = 89655873;
+                            maxMoney = 79655873;
                         }else{
                             maxMoney = parseInt(v_this.totalDonateMoney) + parseInt(addMoney);
                         }
@@ -648,7 +658,7 @@
                                 if(isInit){
                                     v_this.totalDonateMoney = v_this.totalDonateMoney + 345678;
                                 }else{
-                                    v_this.totalDonateMoney = v_this.totalDonateMoney + 50;
+                                    v_this.totalDonateMoney = v_this.totalDonateMoney + (parseInt(addMoney) / 100);
                                 }
                             }
                         }, 10);
